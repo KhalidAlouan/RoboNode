@@ -1,0 +1,62 @@
+<%include partials/_header%>
+
+
+  
+
+<div class="container"
+  <idv class="row">
+	<!--formulario-->
+	<div class="col-md-5">
+		<div class="card">
+			<div class="card-body">
+			  <form action="/insertar" method="POST">
+			   <div class="form-group">
+			   <label>Inserta un titulo</label>
+			   	<input type="text" name="titulo"  class="form-control">
+			   </div>
+
+			   <div class="form-group">
+			   <label>Inserta una descpricion</label>
+			   	<textarea name="descripcion" cols="80" class="form-control" > </textarea>
+			   </div>
+			   <button type="submit" class="btn btn-primary btn-block">Insertar</button>
+
+			  </form>
+			</div>
+		</div>
+	</div>
+	<!--list-->
+	<div class="col-md-6">
+	<table class="table table-bordered table-hover">
+		<thead>
+		  <tr>
+		   <th>Nº</th>
+		   <th>Titulo</th>
+		   <th>Descripcion</th>
+		   <th>Operacion</th>
+		  </tr>
+		</thead>
+
+		<tbody>
+		<% for(var i=0; i<juegos.length; i++){ %>
+		  <tr>
+		 	<td><%= i+1 %></td>
+			<td><%= juegos[i].titulo %></td>
+			<td><%= juegos[i].descripcion %></td>
+			<td>
+			 <a href="/eliminar/<%= juegos[i]._id %>" class="btn btn-danger">Eliminar</a>
+
+			 <a href="/editar/<%= juegos[i]._id %>" class="btn btn-info">Editar</a>
+			</td>
+
+		  </tr>
+		<% } %>
+		</tbody>
+
+	</table>
+
+	</div>
+  </div>
+</div>
+
+<%include partials/_footer%>	
